@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+.color-primary-0 { color: #655357 }	/* Main Primary color */
+.color-primary-1 { color: #B7A3A7 }
+.color-primary-2 { color: #8D787D }
+.color-primary-3 { color: #2F2527 }
+.color-primary-4 { color: #331A20 }
+
+.color-secondary-1-0 { color: #3C4945 }	/* Main Secondary color (1) */
+.color-secondary-1-1 { color: #768480 }
+.color-secondary-1-2 { color: #576661 }
+.color-secondary-1-3 { color: #1B2220 }
+.color-secondary-1-4 { color: #13251F }
+
+.color-secondary-2-0 { color: #656957 }	/* Main Secondary color (2) */
+.color-secondary-2-1 { color: #BABFA9 }
+.color-secondary-2-2 { color: #8E937D }
+.color-secondary-2-3 { color: #2F3127 }
+.color-secondary-2-4 { color: #30351B }
+
+h1 {
+    color: #BABFA9;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+    text-align: center;
+  }
+  h2, h3 {
+    color: #B7A3A7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  body {
+    margin: 0em;
+  }
+  body, input[type="text"], button {
+    color: #888;
+    font-family: Cambria, Georgia;
+  }
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  header{
+      background-color: #13251F;
+  }
+
+  header, h1{
+      padding: 1rem;
+  }
+
+  footer{
+      margin: 5rem, 0rem;
+      text-align: center;
+      background-color: #2F2527;
+  }
+
+  footer, h2{
+      padding: 1rem;
+  }
+

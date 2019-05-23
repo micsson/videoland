@@ -1,0 +1,16 @@
+<h2>My Movies</h2>
+<ul class="movies">
+  <li *ngFor="let movie of movies">
+    <span class="badge">{{movie.id}}</span> {{movie.name}}
+  </li>
+</ul>
+
+<h2>{{movie.name | uppercase}} Details</h2>
+<div><span>id: </span>{{movie.id}}</div>
+<div><span>name: </span>{{movie.name}}</div>
+
+<div>
+  <label>
+    <input [(ngModel)]="movie.name" placeholder="search"/>
+  </label>
+</div>
