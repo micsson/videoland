@@ -7,17 +7,18 @@ import { MOVIES } from '../mock-movies';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
+
 export class MoviesComponent implements OnInit {
 
-  movies =  MOVIES;
+  movies = MOVIES;
+  selectedMovie: Movie;
 
-  movie: Movie = {
-    id: 1,
-    name: 'Windstorm'
-  };
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSelect(movie: Movie): void {
+    this.selectedMovie = movie;
+  }
 }
