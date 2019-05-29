@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
     MoviesComponent,
     MovieDetailComponent,
     CartComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
