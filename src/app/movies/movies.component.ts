@@ -11,7 +11,6 @@ import { MovieService } from '../movie.service';
 
 export class MoviesComponent implements OnInit {
 
-  selectedMovie: Movie;
 
   movies: Movie[];
   
@@ -21,9 +20,6 @@ export class MoviesComponent implements OnInit {
     this.getMovies();
   }
 
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-  }
   getMovies(): void {
     this.movieService.getMovies()
       .subscribe(movies => this.movies = movies);
