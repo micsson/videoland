@@ -19,4 +19,10 @@ export class MovieService {
     return of(MOVIES);
   }
 
+  getMovie(id: number): Observable<Movie> {
+    // TODO: add to cart _after_ fetching the movie
+    this.cartItemService.add(`MovieService: fetched movie id=${id}`);
+    return of(MOVIES.find(movie => movie.id === id));
+  }
+
 }

@@ -11,7 +11,6 @@ import { MovieService } from '../movie.service';
 
 export class MoviesComponent implements OnInit {
 
-
   movies: Movie[];
   
   constructor(private movieService: MovieService) { }
