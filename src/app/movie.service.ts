@@ -6,6 +6,7 @@ import { Movie } from './movie';
 
 import { CartItemService } from './cart-item.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +20,39 @@ export class MovieService {
 
     getMovies (): Observable<Movie[]> {
       return this.http.get<Movie[]>(this.moviesUrl)
+      .pipe(
+        tap(_ => this.log('fetched movies')),
+        catchError(this.handleError<Movie[]>('getHeroes', []))
+      );
     }
 
   getMovie(id: number): Observable<Movie> {
-    // TODO: add to cart _after_ fetching the movie
-    this.cartItemService.add(`MovieService: fetched movie id=${id}`);
-    return of(MOVIES.find(movie => movie.id === id));
+    const url = `${this.moviesUrl}/${id}`;
+  return this.http.get<Movie>(url).pipe(
+    tap(_ => this.log(`fetched movie id=${id}`)),
+    catchError(this.handleError<Movie>(`getMovie id=${id}`))
+  );
   }
+
+  /**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
+private handleError<T> (operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    // TODO: send the error to remote logging infrastructure
+    console.error(error); // log to console instead
+
+    // TODO: better job of transforming error for user consumption
+    this.log(`${operation} failed: ${error.message}`);
+
+    // Let the app keep running by returning an empty result.
+    return of(result as T);
+  };
+}
 
   private log(cartItem: string) {
     this.cartItemService.add(`MovieService: ${cartItem}`);
