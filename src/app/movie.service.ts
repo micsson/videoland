@@ -65,6 +65,18 @@ deleteMovie (movie: Movie | number): Observable<Movie> {
   );
 }
 
+/* GET movies whose name contains search term */
+searchMovies(term: string): Observable<Movie[]> {
+  if (!term.trim()) {
+    // if not search term, return empty movie array.
+    return of([]);
+  }
+  return this.http.get<Movie[]>(`${this.moviesUrl}/?name=${term}`).pipe(
+    tap(_ => this.log(`found movies matching "${term}"`)),
+    catchError(this.handleError<Movie[]>('searchMovies', []))
+  );
+}
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.
