@@ -54,6 +54,17 @@ addMovie (movie: Movie): Observable<Movie> {
   );
 }
 
+/** DELETE: delete the movie from the server */
+deleteMovie (movie: Movie | number): Observable<Movie> {
+  const id = typeof movie === 'number' ? movie : movie.id;
+  const url = `${this.moviesUrl}/${id}`;
+
+  return this.http.delete<Movie>(url, httpOptions).pipe(
+    tap(_ => this.log(`deleted movie id=${id}`)),
+    catchError(this.handleError<Movie>('deleteMovie'))
+  );
+}
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.

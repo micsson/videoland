@@ -32,4 +32,10 @@ export class MoviesComponent implements OnInit {
         this.movies.push(movie);
       });
   }
+
+  delete(movie: Movie): void {
+    this.movies = this.movies.filter(h => h !== movie);
+    this.movieService.deleteMovie(movie).subscribe();
+  }
+
 }
