@@ -34,6 +34,14 @@ export class MovieService {
   );
   }
 
+  /** PUT: update the hero on the server */
+updateMovie (movie: Movie): Observable<any> {
+  return this.http.put(this.moviesUrl, movie, httpOptions).pipe(
+    tap(_ => this.log(`updated movie id=${movie.id}`)),
+    catchError(this.handleError<any>('updateMovie'))
+  );
+}
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.
