@@ -38,11 +38,19 @@ export class MovieService {
   );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the movie on the server */
 updateMovie (movie: Movie): Observable<any> {
   return this.http.put(this.moviesUrl, movie, httpOptions).pipe(
     tap(_ => this.log(`updated movie id=${movie.id}`)),
     catchError(this.handleError<any>('updateMovie'))
+  );
+}
+
+/** POST: add a new movie to the server */
+addMovie (movie: Movie): Observable<Movie> {
+  return this.http.post<Movie>(this.moviesUrl, movie, httpOptions).pipe(
+    tap((newMovie: Movie) => this.log(`added movie w/ id=${newMovie.id}`)),
+    catchError(this.handleError<Movie>('addMovie'))
   );
 }
 
