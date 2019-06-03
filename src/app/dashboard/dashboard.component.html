@@ -1,4 +1,6 @@
-<h3>Top Movies</h3>
+<app-movie-search></app-movie-search>
+
+<h3>Featured Movies</h3>
 <div class="grid grid-pad">
   <a *ngFor="let movie of movies" class="col-1-4"
       routerLink="/detail/{{movie.id}}">
@@ -7,5 +9,3 @@
     </div>
   </a>
 </div>
-
-<app-movie-search></app-movie-search>

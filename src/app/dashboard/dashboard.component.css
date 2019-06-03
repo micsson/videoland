@@ -27,9 +27,11 @@
   }
   .col-1-4 {
     width: 25%;
+    display: flex;
+    justify-content: space-around;
   }
   .module {
-    padding: 20px;
+    padding: 20px 80px;
     text-align: center;
     color: #eee;
     max-height: 120px;
