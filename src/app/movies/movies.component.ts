@@ -21,7 +21,10 @@ export class MoviesComponent implements OnInit {
 
   getMovies(): void {
     this.movieService.getMovies()
-      .subscribe(movies => this.movies = movies);
+      .subscribe(movies => {
+        console.log("Got movies: ", movies);
+        this.movies = movies;
+      });
   }
 
   add(name: string): void {
