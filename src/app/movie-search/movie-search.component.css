@@ -27,6 +27,12 @@
   .search-result li a:active {
     color: white;
   }
+
+  #search-component{
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
   #search-box {
     width: 200px;
     height: 20px;
