@@ -19,16 +19,20 @@ export class MovieService {
 
   constructor(
     private http: HttpClient,
-    private cartItemService: CartItemService) { }
-    private moviesUrl = 'api/movies';  // URL to web api
+    private cartItemService: CartItemService) 
+    { }
+
+    private moviesUrl = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';  // URL to web api
 
     getMovies (): Observable<Movie[]> {
-      return this.http.get<Movie[]>(this.moviesUrl)
-      .pipe(
-        tap(_ => this.log('fetched movies')),
-        catchError(this.handleError<Movie[]>('getHeroes', []))
-      );
+      console.log('Getting movies');
+      return this.http.get<Movie[]>(this.moviesUrl);
+      // .pipe(
+      //   tap(_ => this.log('fetched movies')),
+      //   catchError(this.handleError<Movie[]>('getHeroes', []))
+      // );
     }
+  
 
   getMovie(id: number): Observable<Movie> {
     const url = `${this.moviesUrl}/${id}`;
@@ -37,6 +41,7 @@ export class MovieService {
     catchError(this.handleError<Movie>(`getMovie id=${id}`))
   );
   }
+  
 
   /** PUT: update the movie on the server */
 updateMovie (movie: Movie): Observable<any> {
