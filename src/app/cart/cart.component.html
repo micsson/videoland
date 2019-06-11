@@ -1,0 +1,8 @@
+<div *ngIf="cartItemService.cart.length">
+
+  <h2>Cart</h2>
+  <button class="clear"
+          (click)="cartItemService.clear()">clear</button>
+  <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem}} </div>
+
+</div>
