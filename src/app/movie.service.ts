@@ -26,11 +26,11 @@ export class MovieService {
 
     getMovies (): Observable<Movie[]> {
       console.log('Getting movies');
-      return this.http.get<Movie[]>(this.moviesUrl);
-      // .pipe(
-      //   tap(_ => this.log('fetched movies')),
-      //   catchError(this.handleError<Movie[]>('getHeroes', []))
-      // );
+      return this.http.get<Movie[]>(this.moviesUrl)
+      .pipe(
+        tap(_ => this.log('fetched movies')),
+        catchError(this.handleError<Movie[]>('getMovies', []))
+      );
     }
   
 
