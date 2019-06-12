@@ -3,6 +3,7 @@
   <h2>Cart</h2>
   <button class="clear"
           (click)="cartItemService.clear()">clear</button>
+          <a routerLink="/Checkout">Checkout</a>
   <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem.movie.name}} | {{cartItem.quantity}}  </div>
 
 </div>

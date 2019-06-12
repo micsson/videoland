@@ -12,6 +12,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
     CartComponent,
     DashboardComponent,
     MovieSearchComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

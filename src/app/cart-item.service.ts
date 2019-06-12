@@ -16,7 +16,7 @@ export class CartItemService {
         console.log(this.cart);
       }
     }
-    
+
     if(added === false){
       this.cart.push({ movie: cartItem, quantity: 1});
       console.log(this.cart);
@@ -26,5 +26,7 @@ export class CartItemService {
   clear() {
     this.cart = [];
   }
+
+  
     
 }
