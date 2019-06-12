@@ -40,6 +40,13 @@
   
   
   ul.search-result {
+    align-items: center;
     margin-top: 0;
     padding-left: 0;
+  
+  }
+
+  .search-result{
+    display: flex;
+    flex-direction: column;
   }

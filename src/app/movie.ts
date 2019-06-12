@@ -5,3 +5,8 @@ export class Movie {
     price: number;
     imageUrl: string;
   }
+
+export class CartItem {
+  movie: Movie;
+  quantity: number;
+}

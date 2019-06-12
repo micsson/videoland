@@ -12,7 +12,8 @@ label {
     padding-left: .4em;
   }
   button {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-family: Arial;
     background-color: #eee;
     border: none;
@@ -20,6 +21,7 @@ label {
     border-radius: 4px;
     cursor: pointer;
     cursor: hand;
+
   }
   button:hover {
     background-color: #cfd8dc;
@@ -28,4 +30,8 @@ label {
     background-color: #eee;
     color: #ccc;
     cursor: auto;
+  }
+
+  .movie-detail{
+    text-align: center;
   }

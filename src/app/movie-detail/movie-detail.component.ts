@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { MovieService }  from '../movie.service';
+import { CartItemService } from '../cart-item.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -17,7 +18,8 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private location: Location
+    private location: Location,
+    private cartService: CartItemService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,10 @@ export class MovieDetailComponent implements OnInit {
   save(): void {
     this.movieService.updateMovie(this.movie)
       .subscribe(() => this.goBack());
+  }
+
+  addToCart() {
+    this.cartService.add(this.movie);
   }
 
 }

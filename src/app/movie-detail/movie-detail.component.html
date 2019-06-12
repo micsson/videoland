@@ -1,13 +1,10 @@
-<div *ngIf="movie">
+<div class="movie-detail" *ngIf="movie">
 
+  <img src="{{ movie.imageUrl }}" style="height:400px;">
   <h2>{{movie.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{movie.id}}</div>
-    <div>
-      <label>name:
-          <input [(ngModel)]="movie.name" placeholder="name"/>
-      </label>
-    </div>
-  
-  </div>
+  <p>{{movie.description}}</p>
+  <p>{{movie.price}} kr</p>
   <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <button (click)="addToCart()">Add to cart</button>
+</div>
+  

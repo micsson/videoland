@@ -5,12 +5,12 @@ import { Observable, of } from 'rxjs';
 import { Movie } from './movie';
 
 import { CartItemService } from './cart-item.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
 
 @Injectable({
   providedIn: 'root'
@@ -23,15 +23,17 @@ export class MovieService {
     { }
 
     private moviesUrl = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';  // URL to web api
+    // private moviesUrl = 'api/movies';
 
-    getMovies (): Observable<Movie[]> {
-      console.log('Getting movies');
-      return this.http.get<Movie[]>(this.moviesUrl)
-      .pipe(
-        tap(_ => this.log('fetched movies')),
-        catchError(this.handleError<Movie[]>('getMovies', []))
-      );
-    }
+
+  getMovies(): Observable<Movie[]> {
+    console.log('Getting movies');
+    return this.http.get<Movie[]>(this.moviesUrl)
+    .pipe(
+      tap(_ => this.log('fetched movies')),
+      catchError(this.handleError<Movie[]>('getMovies', []))
+    );
+  }
   
 
   getMovie(id: number): Observable<Movie> {
@@ -45,7 +47,7 @@ export class MovieService {
 
   /** PUT: update the movie on the server */
 updateMovie (movie: Movie): Observable<any> {
-  return this.http.put(this.moviesUrl, movie, httpOptions).pipe(
+  return this.http.put(this.moviesUrl, movie).pipe(
     tap(_ => this.log(`updated movie id=${movie.id}`)),
     catchError(this.handleError<any>('updateMovie'))
   );
@@ -53,7 +55,7 @@ updateMovie (movie: Movie): Observable<any> {
 
 /** POST: add a new movie to the server */
 addMovie (movie: Movie): Observable<Movie> {
-  return this.http.post<Movie>(this.moviesUrl, movie, httpOptions).pipe(
+  return this.http.post<Movie>(this.moviesUrl, movie).pipe(
     tap((newMovie: Movie) => this.log(`added movie w/ id=${newMovie.id}`)),
     catchError(this.handleError<Movie>('addMovie'))
   );
@@ -64,7 +66,7 @@ deleteMovie (movie: Movie | number): Observable<Movie> {
   const id = typeof movie === 'number' ? movie : movie.id;
   const url = `${this.moviesUrl}/${id}`;
 
-  return this.http.delete<Movie>(url, httpOptions).pipe(
+  return this.http.delete<Movie>(url).pipe(
     tap(_ => this.log(`deleted movie id=${id}`)),
     catchError(this.handleError<Movie>('deleteMovie'))
   );
@@ -103,6 +105,6 @@ private handleError<T> (operation = 'operation', result?: T) {
 }
 
   private log(cartItem: string) {
-    this.cartItemService.add(`MovieService: ${cartItem}`);
+    // this.cartItemService.add(`MovieService: ${cartItem}`);
   }
 }
