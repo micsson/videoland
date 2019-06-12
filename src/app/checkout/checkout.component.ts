@@ -2,9 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../movie';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 import { MovieService }  from '../movie.service';
-import { CartItemService } from '../cart-item.service';
 
 @Component({
   selector: 'app-checkout',
@@ -19,12 +17,10 @@ export class CheckoutComponent implements OnInit {
     private route: ActivatedRoute,
     private movieService: MovieService,
     private location: Location,
-    private cartService: CartItemService
   ) { }
 
   ngOnInit() {
   }
-
   getMovie(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMovie(id)
@@ -33,8 +29,5 @@ export class CheckoutComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
-  }
-  addToCart() {
-    this.cartService.add(this.movie);
   }
 }
