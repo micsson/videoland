@@ -20,6 +20,7 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
     cursor: hand;
+    margin: 10px;
   }
   button:hover {
     background-color: #cfd8dc;
@@ -36,5 +37,26 @@ h2 {
 
   .cart-box{
     text-align: center;
-    
+
+  }
+  a {
+    font-family: Arial;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+
+  a:visited, a:link {
+    color: #607d8b;
+  }
+
+  a:hover {
+    color: #039be5;
+    background-color: #cfd8dc;
+  }
+  a.active {
+    color: #039be5;
   }
