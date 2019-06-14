@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     DashboardComponent,
     MovieSearchComponent,
     CheckoutComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
