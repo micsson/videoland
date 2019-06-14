@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent }      from './movies/movies.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { MovieDetailComponent }  from './movie-detail/movie-detail.component';
-import { CheckoutComponent } from './checkout/checkout.component'
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AdminComponent } from './admin/admin.component'
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: MovieDetailComponent },
   { path: 'checkout', component: CheckoutComponent},
+  { path: 'admin', component: AdminComponent},
 ];
 
 @NgModule({
