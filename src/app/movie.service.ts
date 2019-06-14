@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { Movie } from './movie';
+import { Movie, CartItem } from './movie';
 
 import { CartItemService } from './cart-item.service';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { IOrder } from './Interfaces/IOrder';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +25,7 @@ export class MovieService {
 
     private moviesUrl = 'https://medieinstitutet-wie-products.azurewebsites.net/api/products';  // URL to web api
     // private moviesUrl = 'api/movies';
-
+    private ordersUrl = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=26';
 
   getMovies(): Observable<Movie[]> {
     console.log('Getting movies');
@@ -32,6 +33,15 @@ export class MovieService {
     .pipe(
       tap(_ => this.log('fetched movies')),
       catchError(this.handleError<Movie[]>('getMovies', []))
+    );
+  }
+
+  getOrders(getorder: IOrder): Observable<IOrder[]> {
+    console.log('Getting orders');
+    return this.http.get<IOrder[]>(this.ordersUrl)
+    .pipe(
+      tap(_ => this.log('fetched orders')),
+      catchError(this.handleError<IOrder[]>('getOrders', []))
     );
   }
   
@@ -53,22 +63,23 @@ updateMovie (movie: Movie): Observable<any> {
   );
 }
 
-/** POST: add a new movie to the server */
-addMovie (movie: Movie): Observable<Movie> {
-  return this.http.post<Movie>(this.moviesUrl, movie).pipe(
-    tap((newMovie: Movie) => this.log(`added movie w/ id=${newMovie.id}`)),
-    catchError(this.handleError<Movie>('addMovie'))
+/** POST: add a new order to the server */
+addOrder (order: IOrder): Observable<IOrder> {
+  return this.http.post<IOrder>(this.ordersUrl, order).pipe(
+    tap((newOrder: IOrder) => this.log(`added order w/ id=${newOrder.id}`)),
+    catchError(this.handleError<IOrder>('addOrder'))
   );
 }
 
-/** DELETE: delete the movie from the server */
-deleteMovie (movie: Movie | number): Observable<Movie> {
-  const id = typeof movie === 'number' ? movie : movie.id;
-  const url = `${this.moviesUrl}/${id}`;
 
-  return this.http.delete<Movie>(url).pipe(
-    tap(_ => this.log(`deleted movie id=${id}`)),
-    catchError(this.handleError<Movie>('deleteMovie'))
+/** DELETE: delete the order from the server */
+deleteOrder (order: IOrder | number): Observable<number> {
+  const id = typeof order === 'number' ? order : order.id;
+  const url = `${this.ordersUrl}/${id}`;
+
+  return this.http.delete<number>(url).pipe(
+    tap(_ => this.log(`deleted order id=${id}`)),
+    catchError(this.handleError<number>('deleteOrder'))
   );
 }
 
