@@ -1,4 +1,18 @@
-<p>
-  checkout works!
-  <button (click)="goBack()">go back</button>
-</p>
+
+<div *ngIf="cartItemService.cart.length > 0" class="cart-box">
+
+    <h2>Checkout</h2>
+    
+    <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem.movie.name}} | {{cartItem.quantity}}  </div>
+
+  </div>
+
+<div class="go-back">
+  <button class="clear" (click)="goBack()">go back</button>
+  <button class="clear" (click)="sendOrder()">Send Order</button>
+</div>
+
+
+
+
+
