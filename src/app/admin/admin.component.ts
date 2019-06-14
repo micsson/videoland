@@ -2,19 +2,19 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../movie';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { IOrder } from '../Interfaces/IOrder'
 
 import { MovieService }  from '../movie.service';
 import { CartItemService } from '../cart-item.service';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class MovieDetailComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
-  @Input() movie: Movie;
-
+  ordersList: IOrder;
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -23,26 +23,20 @@ export class MovieDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getMovie();
+    this.movieService.getOrders(this.ordersList).subscribe(result =>{
+      this.ordersList = result;
+      console.log(this.ordersList);
+    });
   }
-  
-  getMovie(): void {
+  getOrders(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMovie(id)
       .subscribe(movie => this.movie = movie);
   }
 
-  goBack(): void {
-    this.location.back();
+  deleteOrder(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.movieService.deleteOrder(id)
+      .subscribe(movie => this.movie = movie);
   }
-
-  save(): void {
-    this.movieService.updateMovie(this.movie)
-      .subscribe(() => this.goBack());
-  }
-
-  addToCart() {
-    this.cartService.add(this.movie);
-  }
-
 }

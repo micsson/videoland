@@ -1,16 +1,8 @@
-/* MovieDetailComponent's private CSS styles */
-label {
-    display: inline-block;
-    width: 3em;
-    margin: .5em 0;
-    color: #607D8B;
-    font-weight: bold;
-  }
-  input {
-    height: 2em;
-    font-size: 1em;
-    padding-left: .4em;
-  }
+.cart-box{
+  text-align: center;
+
+}
+
   button {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -32,6 +24,6 @@ label {
     cursor: auto;
   }
 
-  .movie-detail{
+  .go-back{
     text-align: center;
   }

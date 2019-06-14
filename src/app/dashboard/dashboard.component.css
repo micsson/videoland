@@ -31,11 +31,14 @@
     justify-content: space-around;
   }
   .module {
-    padding: 20px 80px;
+    /* padding: 80px 50px; */
+    width: 300px;
+    height: 300px;
+    padding: 20px;
     text-align: center;
     color: #eee;
-    max-height: 120px;
-    min-width: 120px;
+    max-height: 300px;
+    min-width: 150px;
     background-color: #607d8b;
     border-radius: 2px;
   }

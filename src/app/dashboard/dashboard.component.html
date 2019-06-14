@@ -5,6 +5,7 @@
   <a *ngFor="let movie of movies" class="col-1-4"
       routerLink="/detail/{{movie.id}}">
     <div class="module movie">
+      <img src="{{ movie.imageUrl }}" style="height:200px;">
       <h4>{{movie.name}}</h4>
     </div>
   </a>
