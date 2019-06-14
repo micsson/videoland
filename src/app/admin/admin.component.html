@@ -1,0 +1,10 @@
+<h2>Orders</h2>
+
+<ul class="orders" *ngFor="let order of ordersList" >
+  <li>
+      {{order.id}} | 
+      {{order.createdBy}} |
+      <button class="clear" (click)="deleteOrder()">Delete</button>
+  </li>
+  
+</ul>
