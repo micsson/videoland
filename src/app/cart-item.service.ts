@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartItem, Movie } from './movie';
+import { ReturnStatement } from '@angular/compiler';
  
 @Injectable({
   providedIn: 'root',
@@ -25,6 +26,11 @@ export class CartItemService {
 
   clear() {
     this.cart = [];
+  }
+
+
+  order(){
+
   }
 
   
