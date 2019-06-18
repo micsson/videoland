@@ -22,13 +22,8 @@ export class CheckoutComponent implements OnInit {
 
   userInfo = new FormGroup({
     userEmail: new FormControl('', Validators.required),
-  });
-
-  payment = new FormControl ('');
-
-  userPayment = new FormGroup({
     paymentOption: new FormControl('', Validators.required),
-  })
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -62,7 +57,6 @@ export class CheckoutComponent implements OnInit {
     const companyId = 26;
 
     let date = moment().format('YYYY-MM-DDTHH:mm:ss');
-    
 
     let order: IOrder = {
       id: 0,
@@ -70,7 +64,7 @@ export class CheckoutComponent implements OnInit {
       createdBy: this.userInfo.value.userEmail,
       totalPrice: totalPrice,
       status: 0,
-      paymentMethod: this.userPayment.value.paymentOption,
+      paymentMethod: this.userInfo.value.paymentOption,
       orderRows: orderRows,
       companyId: companyId,
     }
