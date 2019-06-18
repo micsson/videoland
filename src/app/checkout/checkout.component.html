@@ -6,7 +6,7 @@
     <form class="form" [formGroup]="userInfo" (ngSubmit)="sendOrder()">
       <label for="userEmail">E-mail</label>
       <input type="email" name="userEmail" id="userEmail" formControlName="userEmail">
-      <select name="paymentMethod" id="paymentMethod" formControlName="paymentMethod">
+      <select name="paymentMethod" id="paymentMethod" formControlName="paymentOption">
         <option value="credit card">Credit Card</option>
         <option value="payPal">Swish</option>
         <option value="klarna">Klarna</option>
