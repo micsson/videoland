@@ -1,8 +1,7 @@
-<div *ngIf="cartItemService.cart.length > 0" class="cart-box">
+<h2>Cart</h2>
 
-  <h2>Cart</h2>
-  
-  <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem.movie.name}} | {{cartItem.quantity}} | {{cartItem.movie.price}} kr </div>
+<div *ngIf="cartItemService.cart.length > 0" class="cart-box">
+  <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem.movie.name}} | {{cartItem.quantity}} </div>
   <button class="clear"
   (click)="cartItemService.clear()">Clear</button>
   <a routerLink="/checkout">Checkout</a>

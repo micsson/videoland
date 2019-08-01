@@ -4,7 +4,11 @@
   <li>
       {{order.id}} | 
       {{order.createdBy}} |
-      <button class="clear" (click)="deleteOrder()">Delete</button>
+      {{order.totalPrice}} |
+      {{order.created}} |
+      {{order.paymentMethod}} 
+
+      <!-- <button class="clear" (click)="deleteOrder()">Delete</button> -->
   </li>
   
 </ul>

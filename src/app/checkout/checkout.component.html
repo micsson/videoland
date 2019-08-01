@@ -1,15 +1,23 @@
 
 <div *ngIf="cartItemService.cart.length > 0" class="cart-box">
-
-    <h2>Checkout</h2>
+  <h2>Checkout</h2> 
+    <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem.movie.name}} | {{cartItem.quantity}} | {{cartItem.totalPrice}}  </div>
     
-    <div *ngFor='let cartItem of cartItemService.cart'> {{cartItem.movie.name}} | {{cartItem.quantity}}  </div>
-
-  </div>
+    <form class="form" [formGroup]="userInfo" (ngSubmit)="sendOrder()">
+      <label for="userEmail">E-mail</label>
+      <input type="email" name="userEmail" id="userEmail" formControlName="userEmail">
+      <select name="paymentMethod" id="paymentMethod" formControlName="paymentOption">
+        <option value="credit card">Credit Card</option>
+        <option value="payPal">Swish</option>
+        <option value="klarna">Klarna</option>
+      </select>
+      <button class="clear" type="submit" [disabled]="!userInfo.valid">Skicka order</button>
+    </form>
+</div>
 
 <div class="go-back">
   <button class="clear" (click)="goBack()">go back</button>
-  <button class="clear" (click)="sendOrder()">Send Order</button>
+  
 </div>
 
 

@@ -36,7 +36,7 @@ export class MovieService {
     );
   }
 
-  getOrders(getorder: IOrder): Observable<IOrder[]> {
+  getOrders(): Observable<IOrder[]> {
     console.log('Getting orders');
     return this.http.get<IOrder[]>(this.ordersUrl)
     .pipe(

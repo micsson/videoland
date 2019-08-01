@@ -12,8 +12,7 @@ label {
     padding-left: .4em;
   }
   button {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 10px 10px 20px 10px;
     font-family: Arial;
     background-color: #eee;
     border: none;
